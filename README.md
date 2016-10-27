@@ -1,11 +1,11 @@
-# WCA
-WCA (WIFI Connector Automatic) is an open source program which is using to connect wifi wpa or wpa-2psk quickly and easily.
+# WAC
+WAC (WIFI Automatic Connector) is an open source program which is using to connect wifi wpa or wpa-2psk quickly and easily.
 
 # How to run?
 
-* sudo chmod +x WCA.sh
+* sudo chmod +x WAC.sh
 
-* sudo ./WCA.sh
+* sudo ./WAC.sh
 
 # Preview
 
