@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 #===========================================================================#
-#                        WIFI Connector Automatic						    #
-#										                                    #
-#                      Script write by Muhammad Yuga						#
-#	                Contact me blackcat@dracos-linux.org					#
+#                          WIFI Connector Automatic			    #
+#									    #
+#                        Script write by Muhammad Yuga			    #
+#	                 Contact me blackcat@gmail.com                      #
 #===========================================================================#
 
 # Color
@@ -70,7 +70,7 @@ echo -e $okegreen"     --------------------------------------------------   ";
 				mkdir /etc/$name 
 				iwconfig
 				echo
-				echo $c4"What your interface wireless?"$rc
+				echo $c4"What your wireless interface?"$rc
 				read interface
 				echo
 				ifconfig $interface up
@@ -94,44 +94,37 @@ echo -e $okegreen"     --------------------------------------------------   ";
 		elif test $wca == '2'
 			then
 				iwconfig
-                echo
-                echo $c4"What your wireless interface?"$rc
-                read interface
-                echo
-                ifconfig $interface up
-                echo $c4"What your ESSID?"$rc
-                read essid
-                iwconfig $interface ESSID "$essid"
-                echo
-				echo $c4"Enter your ESSID password:"$rc
-                stty -echo
-                read pass
-                stty echo
-                echo "What is your conf name?"
-                read conf
-				wpa_passphrase "$essid" $pass > /etc/wpa/$conf.conf
-                wpa_supplicant -Dwext -i$interface -c /etc/wpa/$conf.conf -B
-                dhclient $interface
-                echo
-                echo "Test your connection!"
+                		echo
+                		echo $c4"What your wireless interface?"$rc
+                		read interface
+               			echo
+                		ifconfig $interface up
+                		echo $c4"What your ESSID?"$rc
+                		read essid
+                		iwconfig $interface ESSID "$essid"
+                		echo
+                		wpa_supplicant -Dwext -i$interface -c /etc/wpa/$conf.conf -B
+                		dhclient $interface
+                		echo
+                		echo "Test your connection!"
 				ping -c3 google.com
 		elif test $wca == '3'
 			then
 				iwconfig
-                echo
-                echo $c4"What your interface wireless?"$rc
-                read interface
-                echo "Check your interface is actived!"
+               			echo
+               			echo $c4"What your wireless interface?"$rc
+                		read interface
+                		echo "Check your interface active or nonactive"
 				ifconfig
 				echo
-                ifconfig $interface up
-                iwlist $interface scan | grep "ESSID"
-                echo $c4"What your ESSID?"$rc
-                read essid
-                iwconfig $interface ESSID "$essid"
-                echo
-                dhclient $interface
-                echo
+                		ifconfig $interface up
+                		iwlist $interface scan | grep "ESSID"
+                		echo $c4"What your ESSID?"$rc
+                		read essid
+                		iwconfig $interface ESSID "$essid"
+                		echo
+                		dhclient $interface
+                		echo
 				echo "Test your connection!"
 				ping -c3 google.com
 		elif test $wca == '5'
@@ -139,7 +132,7 @@ echo -e $okegreen"     --------------------------------------------------   ";
 		        clear
 		        exit
 				fi
-						echo -n -e "Do you want to exit (y/n)? ";
+					echo -n -e "Do you want to exit (y/n)? ";
 						read again
 						    while  [ $again != 'n' ] && [ $again != 'N' ] && [ $again != 'y' ] && [ $again != 'Y' ];
 						    do
