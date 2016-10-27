@@ -3,9 +3,9 @@ WCA (WIFI Connector Automatic) is an open source program which is using to conne
 
 # How to run?
 
-*sudo chmod +x WCA.sh`
+*sudo chmod +x WCA.sh
 
-*sudo ./WCA.sh`
+*sudo ./WCA.sh
 
 # Preview
 
