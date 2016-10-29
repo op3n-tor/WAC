@@ -8,16 +8,6 @@
 #===========================================================================#
 
 # Color
-c0="$(tput setaf 0)"	# black
-c1="$(tput setaf 1)"	# red
-c2="$(tput setaf 2)"	# green
-c3="$(tput setaf 3)"	# yellow
-c4="$(tput setaf 4)"	# blue
-c5="$(tput setaf 5)"	# magenta
-c6="$(tput setaf 6)"	# cyan
-c7="$(tput setaf 7)"	# white
-rc="$(tput sgr0)"		# reset
-
 cyan='\e[0;36m'
 green='\e[0;34m'
 okegreen='\033[92m'
@@ -26,7 +16,6 @@ white='\e[1;37m'
 red='\e[1;31m'
 yellow='\e[1;33m'
 BlueF='\e[1;34m'
-
 
 ################################################
 # OPTIONS
@@ -52,9 +41,10 @@ echo "        \   \/    \/   /   ___   \  |             		"
 echo "         \     /\     /   /   \   \  \ _____  			"
 echo "          \___/  \___/___/     \___\ _______| v1.0      	"             
 echo ""
-echo -e $white"          WIFI Automatic Connector"
+echo -e $white"     -----------------------------------------"
+echo -e $white"       Wireless Automatic Connector"
+echo -e $white"     -----------------------------------------"
 echo -e $cyan ""
-echo -e $white ""
 echo -e $white"     [$okegreen"1"$white]$cyan  CONNECT TO WIFI WPA2-PSK (CREATE NEW CONF)  "
 echo -e $white"     [$okegreen"2"$white]$cyan  CONNECT TO WIFI WPA2-PSK (LOAD OLD CONF)  "
 echo -e $white"     [$okegreen"3"$white]$cyan  CONNECT TO WIFI WPA  "
@@ -65,28 +55,25 @@ read wac
 echo -e $okegreen"     --------------------------------------------------   ";
 		if test $wac == '1'
 			then
-				echo "Create new directory for save configuration"
-				read $name
-				mkdir /etc/$name 
 				iwconfig
 				echo
-				echo $c4"What your wireless interface?"$rc
+				echo -e $cyan"What your wireless interface?"
 				read interface
 				echo
 				ifconfig $interface up
 				iwlist $interface scan | grep "ESSID"
-				echo $c4"What your ESSID?"$rc
+				echo -e $cyan"What your ESSID?"
 				read essid
 				iwconfig $interface ESSID "$essid"
 				echo
-				echo $c4"Enter your ESSID password:"$rc
+				echo -e $cyan"Enter your ESSID password:"
 				stty -echo
 				read pass
 				stty echo
-				echo $c4"Enter your *.conf name:"$rc
+				echo -e $cyan"Enter your *.conf name:"
 				read conf
-				wpa_passphrase "$essid" $pass > /etc/wpa/$conf.conf
-				wpa_supplicant -Dwext -i$interface -c /etc/wpa/$conf.conf -B
+				wpa_passphrase "$essid" $pass > /etc/$conf.conf
+				wpa_supplicant -D wext -i $interface -c /etc/$conf.conf -B
 				dhclient $interface
 				echo
 				echo "Test your connection!"
@@ -95,15 +82,18 @@ echo -e $okegreen"     --------------------------------------------------   ";
 			then
 				iwconfig
                 		echo
-                		echo $c4"What your wireless interface?"$rc
+                		echo -e $cyan"What your wireless interface?"
                 		read interface
                			echo
                 		ifconfig $interface up
-                		echo $c4"What your ESSID?"$rc
+				iwlist $interface scan | grep "ESSID"
+                		echo -e $cyan"What your ESSID?"
                 		read essid
                 		iwconfig $interface ESSID "$essid"
                 		echo
-                		wpa_supplicant -Dwext -i$interface -c /etc/wpa/$conf.conf -B
+				echo -e $cyan"What name of file .conf to load?"
+				read conf
+				wpa_supplicant -D wext -i $interface -c /etc/$conf.conf -B
                 		dhclient $interface
                 		echo
                 		echo "Test your connection!"
@@ -112,14 +102,14 @@ echo -e $okegreen"     --------------------------------------------------   ";
 			then
 				iwconfig
                			echo
-               			echo $c4"What your wireless interface?"$rc
+               			echo -e $cyan"What your wireless interface?"
                 		read interface
                 		echo "Check your interface active or nonactive"
 				ifconfig
 				echo
                 		ifconfig $interface up
                 		iwlist $interface scan | grep "ESSID"
-                		echo $c4"What your ESSID?"$rc
+                		echo -e $cyan"What your ESSID?"
                 		read essid
                 		iwconfig $interface ESSID "$essid"
                 		echo
@@ -131,12 +121,12 @@ echo -e $okegreen"     --------------------------------------------------   ";
 		      then
 		        clear
 		        exit
-				fi
-					echo -n -e "Do you want to exit (y/n)? ";
-						read again
-						    while  [ $again != 'n' ] && [ $again != 'N' ] && [ $again != 'y' ] && [ $again != 'Y' ];
-						    do
-						       echo -n "Do you want to exit (y/n)?";
-						       read again;
+			fi
+				echo -n -e "Do you want to exit (y/n)? ";
+					read again
+						while  [ $again != 'n' ] && [ $again != 'N' ] && [ $again != 'y' ] && [ $again != 'Y' ];
+							do
+						       	echo -n "Do you want to exit (y/n)?";
+						       	read again;
 						    done
-					done
+				done
