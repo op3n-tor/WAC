@@ -9,7 +9,7 @@ WAC (Wireless Automatic Connector) is an open source program which is using to c
 
 # Preview
 
-![Screenshot](preview.png)
+![Screenshot](wac.png)
 
 # Thanks
 
