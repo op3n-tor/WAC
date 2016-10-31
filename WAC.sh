@@ -3,7 +3,7 @@
 #===========================================================================#
 #                          WIFI Connector Automatic			    #
 #									    #
-#                        Script write by Muhammad Yuga			    #
+#                        Script write by BlackCat        		    #
 #	                 Contact me blackcat@gmail.com                      #
 #===========================================================================#
 
@@ -117,7 +117,7 @@ echo -e $okegreen"     --------------------------------------------------   ";
                 		echo
 				echo "Test your connection!"
 				ping -c3 google.com
-		elif test $wac == '5'
+		elif test $wac == '4'
 		      then
 		        clear
 		        exit
