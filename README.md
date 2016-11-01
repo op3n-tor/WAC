@@ -1,5 +1,5 @@
 # WAC
-WAC (Wireless Automatic Connector) is an open source program which is using to connect ethernet, wifi wpa or wpa-2psk quickly and easily.
+WAC (Wireless Automatic Connector) is an bash script which is using to connect ethernet, wifi wpa or wpa-2psk quickly and easily.
 
 # How to run?
 
