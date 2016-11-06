@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 #===========================================================================#
-#                          Wireless Connector Automatic			    #
+#                         Wireless Connector Automatic			    #
 #									    #
-#                        Script write by BlackCat			    #
+#                           Script write by BlackCat			    #
 #	                 Contact me blackcat@gmail.com                      #
 #===========================================================================#
 
@@ -161,7 +161,7 @@ echo -e $okegreen"     --------------------------------------------------   ";
 				stty -echo
 				read pass
 				stty echo
-				echo -e $cyan"Enter your *.conf name:"
+				echo -e $cyan"Enter your *.conf name (example.conf):"
 				read conf
 				wpa_passphrase "$essid" $pass > /etc/$conf.conf
 				wpa_supplicant -D wext -i $interface -c /etc/$conf.conf -B
@@ -182,7 +182,7 @@ echo -e $okegreen"     --------------------------------------------------   ";
                 read essid
                 iwconfig $interface ESSID "$essid"
                 echo
-				echo -e $cyan"What name of file .conf to load?"
+				echo -e $cyan"What name of file .conf to load (example.conf)?"
 				read conf
 				wpa_supplicant -D wext -i $interface -c /etc/$conf.conf -B
                 dhclient $interface
@@ -276,7 +276,7 @@ echo -e $okegreen"     --------------------------------------------------   ";
 				stty -echo
 				read pass
 				stty echo
-				echo -e $cyan"Enter your *.conf name:"
+				echo -e $cyan"Enter your *.conf name (example.conf):"
 				read conf
 				wpa_passphrase "$essid" $pass > /etc/$conf.conf
 				wpa_supplicant -D wext -i $interface -c /etc/$conf.conf -B
@@ -297,7 +297,7 @@ echo -e $okegreen"     --------------------------------------------------   ";
                 read essid
                 iwconfig $interface ESSID "$essid"
                 echo
-				echo -e $cyan"What name of file .conf to load?"
+				echo -e $cyan"What name of file .conf to load (example.conf)?"
 				read conf
 				wpa_supplicant -D wext -i $interface -c /etc/$conf.conf -B
                 dhclient $interface
